@@ -4,5 +4,14 @@ namespace Lefew.Domain.Models
 {
     public class Prospect : Entity
     {
+        public string Email { get; private set; }
+
+        public Distributor Distributor { get; private set; }
+
+        public Prospect(string email, Distributor distributor)
+        {
+            Email = email;
+            Distributor = distributor;
+        }
     }
 }

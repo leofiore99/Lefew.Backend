@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lefew.Backend.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class DistributorController : Controller
     {
         // GET api/values
         [HttpGet]
