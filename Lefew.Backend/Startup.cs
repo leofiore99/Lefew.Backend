@@ -51,6 +51,16 @@ namespace Lefew.Backend
 
                 c.IncludeXmlComments(caminhoXmlDoc);
             });
+
+            #region Cors
+            //Aplicar o Cors
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +70,9 @@ namespace Lefew.Backend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //Aplica o Cors
+            app.UseCors("MyPolicy");
 
             app.UseMvc();
 
