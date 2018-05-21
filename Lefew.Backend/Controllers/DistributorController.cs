@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Lefew.Application.InputModels;
+using Lefew.Application.Interfaces;
+using Lefew.Domain.Models;
+using Lefew.RestApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lefew.Backend.Controllers
 {
     [Route("api/[controller]")]
-    public class DistributorController : Controller
+    public class DistributorController : BaseApiController
     {
+        private IDistributorAppService _appService { get; }
+
+        public DistributorController(IDistributorAppService appService)
+        {
+            _appService = appService;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -23,8 +34,10 @@ namespace Lefew.Backend.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Object value)
+        public async Task<IActionResult> Post([FromBody]Distributor input)
         {
+            var c = await _appService.Add(input);
+            return Created("Get", c.Id, c);
         }
 
         // PUT api/values/5
@@ -37,6 +50,14 @@ namespace Lefew.Backend.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        // POST api/values
+        [HttpPost("Process")]
+        public async Task<IActionResult> Process([FromBody]ProcessInputModel input)
+        {
+            var c = await _appService.Process(input);
+            return Created("Get", c.Id, c);
         }
     }
 }

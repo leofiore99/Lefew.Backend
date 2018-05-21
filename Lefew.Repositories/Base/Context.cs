@@ -8,8 +8,8 @@ namespace Lefew.Repositories.Base
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
 
-        public DbSet<Prospect> Badges { get; set; }
-        public DbSet<Distributor> Companies { get; set; }
+        public DbSet<Prospect> Prospects { get; set; }
+        public DbSet<Distributor> Distributors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

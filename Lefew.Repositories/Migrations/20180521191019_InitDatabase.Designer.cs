@@ -11,8 +11,8 @@ using System;
 namespace Lefew.Repositories.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20180517140210_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20180521191019_InitDatabase")]
+    partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace Lefew.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Prospect");
+                    b.ToTable("Distributor");
                 });
 
             modelBuilder.Entity("Lefew.Domain.Models.Prospect", b =>
@@ -52,7 +52,7 @@ namespace Lefew.Repositories.Migrations
 
                     b.HasIndex("DistributorId");
 
-                    b.ToTable("Distributor");
+                    b.ToTable("Prospect");
                 });
 
             modelBuilder.Entity("Lefew.Domain.Models.Prospect", b =>

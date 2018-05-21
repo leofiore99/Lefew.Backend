@@ -33,7 +33,7 @@ namespace Lefew.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Prospect");
+                    b.ToTable("Distributor");
                 });
 
             modelBuilder.Entity("Lefew.Domain.Models.Prospect", b =>
@@ -51,7 +51,7 @@ namespace Lefew.Repositories.Migrations
 
                     b.HasIndex("DistributorId");
 
-                    b.ToTable("Distributor");
+                    b.ToTable("Prospect");
                 });
 
             modelBuilder.Entity("Lefew.Domain.Models.Prospect", b =>

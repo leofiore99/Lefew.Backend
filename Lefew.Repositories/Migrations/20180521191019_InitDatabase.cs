@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Lefew.Repositories.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class InitDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Prospect",
+                name: "Distributor",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -20,11 +20,11 @@ namespace Lefew.Repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prospect", x => x.Id);
+                    table.PrimaryKey("PK_Distributor", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Distributor",
+                name: "Prospect",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,28 +34,28 @@ namespace Lefew.Repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Distributor", x => x.Id);
+                    table.PrimaryKey("PK_Prospect", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Distributor_Prospect_DistributorId",
+                        name: "FK_Prospect_Distributor_DistributorId",
                         column: x => x.DistributorId,
-                        principalTable: "Prospect",
+                        principalTable: "Distributor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Distributor_DistributorId",
-                table: "Distributor",
+                name: "IX_Prospect_DistributorId",
+                table: "Prospect",
                 column: "DistributorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Distributor");
+                name: "Prospect");
 
             migrationBuilder.DropTable(
-                name: "Prospect");
+                name: "Distributor");
         }
     }
 }

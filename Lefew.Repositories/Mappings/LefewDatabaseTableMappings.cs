@@ -8,7 +8,7 @@ namespace Lefew.Repositories.Mappings
         public static ModelBuilder ApplyLefewTableMappings(this ModelBuilder modelBuilder)
         {
             return modelBuilder
-               .Entity<Prospect>(entity =>
+               .Entity<Distributor>(entity =>
                {
                    entity
                    .ToTable("Distributor");
@@ -18,7 +18,7 @@ namespace Lefew.Repositories.Mappings
                    .IsRequired();
                })
 
-               .Entity<Distributor>(entity =>
+               .Entity<Prospect>(entity =>
                {
                    entity
                    .ToTable("Prospect");

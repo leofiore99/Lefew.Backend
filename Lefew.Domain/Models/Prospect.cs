@@ -8,6 +8,8 @@ namespace Lefew.Domain.Models
 
         public Distributor Distributor { get; private set; }
 
+        private Prospect() { }
+
         public Prospect(string email, Distributor distributor)
         {
             Email = email;
